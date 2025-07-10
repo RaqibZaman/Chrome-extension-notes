@@ -1,15 +1,24 @@
 const notepad = document.getElementById('notepad');
 const download_btn = document.getElementById('download');
+const notesWrapper = document.getElementById('notes-wrapper');
+
+const NUM_NOTES = 2;
+
+for (let i=0; i < NUM_NOTES; i++){
+    makeNoteBlock(i);
+}
+
+function makeNoteBlock(index) {
+    
+
+}
 
 // Load saved notes???
 chrome.storage.local.get("note", (data) => {
     notepad.value = data.note || "";
 });
 
-// Save note on change
-notepad.addEventListener("input", () => {
-    chrome.storage.local.set({ note: notepad.value});
-});
+
 
 download_btn.addEventListener("click", () => {
     const blob = new Blob([notepad.value], {type: "text/plain"});
