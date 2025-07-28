@@ -6,6 +6,10 @@
 <body>
     <h1>Hello!</h1>
     <button id="clickme">Click Me</button>
-    <script src="popup.js"></script>
+    <script src="popup.js">
+        document.getElementById("clickme").addEventListener("click", () => {
+            alert("You clicked the button!");
+        });
+    </script>
 </body>
 </html>

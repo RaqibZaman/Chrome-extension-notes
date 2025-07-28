@@ -3,36 +3,40 @@ body {
     padding: 0;
     /* background: black;
     background-color: black; */
-    background-color: #1f1f1f;
+    /* background-color: #1f1f1f; */
     height: 100vh;
     overflow-y: auto;
 }
-.note-wrapper {
+/* .note-wrapper {
     display:flex;
     flex-direction: column;
     gap: 20px;
-}
-.note-container {
+} */
+/* .note-container {
     padding: 16px;
     border-radius: 10px;
     box-shadow: 0 40px 8px rgba(0,0,0, 0.1);
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
+} */
 textarea {
     width: 100%;
-    height: 100vh;
+    height: 95vh;
     box-sizing: border-box;
     font-size: 16px;
     padding: 10px;
     border: none;
     resize: none;
-    background-color: grey;
-    color: white;
+    /* background-color: grey; */
+    /* color: white; */
 }
 button {
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    width: 90%;
 }
