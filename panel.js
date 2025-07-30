@@ -1,3 +1,33 @@
+// copy link buttons
+
+document.querySelectorAll('.cpy').forEach((btnX) => {
+    btnX.addEventListener('click', () => {
+        const id = btnX.id;
+        let str = '';
+
+        if (id === 'linkedin') {
+            str = "https://www.linkedin.com/in/raqibzaman/";
+        } else if (id === 'github') {
+            str = "https://github.com/RaqibZaman";
+        } else if (id === 'website') {
+            str = "https://www.therevisionist.org/software-engineering/";
+        }
+
+        navigator.clipboard.writeText(str)
+            .then(() => {
+                const preTxt = btnX.innerHTML;
+                btnX.innerHTML = "Copied!";
+                setTimeout(() => {
+                    btnX.innerHTML = preTxt;
+                }, 1000);
+            })
+            .catch(err => console.error("copy failed", err));
+    });
+});
+
+
+
+
 const notepad = document.getElementById('notepad');
 const download_btn = document.getElementById('download');
 
