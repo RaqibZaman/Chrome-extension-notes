@@ -1,20 +1,40 @@
-// copy link buttons
+// dynamically make buttons using private data
+fetch(chrome.runtime.getURL('private.json'))
+.then(response => response.json())
+.then(data => {
+    const dyBtnGrp = document.getElementById('dynamic-btn-group');
+    data.forEach(group => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'btnbox';
 
-document.querySelectorAll('.cpy').forEach((btnX) => {
-    btnX.addEventListener('click', () => {
-        const id = btnX.id;
-        let str = btnX.getAttribute('data-text');
+        for (const [key, val] of Object.entries(group)) {
+            const btn = document.createElement('button');
+            btn.className = 'cpy';
+            btn.innerHTML = key;
+            btn.setAttribute('data-text', val);
+            groupDiv.appendChild(btn);
+        }
 
-        navigator.clipboard.writeText(str)
-            .then(() => {
-                const preTxt = btnX.innerHTML;
-                btnX.innerHTML = "Copied!";
-                setTimeout(() => {
-                    btnX.innerHTML = preTxt;
-                }, 1000);
-            })
-            .catch(err => console.error("copy failed", err));
+        dyBtnGrp.appendChild(groupDiv);
     });
+
+    // copy link/text from buttons to clipboard
+    document.querySelectorAll('.cpy').forEach((btnX) => {
+        btnX.addEventListener('click', () => {
+            let str = btnX.getAttribute('data-text');
+
+            navigator.clipboard.writeText(str)
+                .then(() => {
+                    const preTxt = btnX.innerHTML;
+                    btnX.innerHTML = "Copied!";
+                    setTimeout(() => {
+                        btnX.innerHTML = preTxt;
+                    }, 1000);
+                })
+                .catch(err => console.error("copy failed", err));
+        });
+    });
+    
 });
 
 
