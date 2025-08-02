@@ -32,7 +32,7 @@ textarea {
     /* color: white; */
 }
 button {
-    padding: 10px;
+    /* padding: 10px; */
     font-size: 16px;
     cursor: pointer;
     margin-left: 5%;
@@ -47,7 +47,7 @@ button {
     padding-left: 5px;
 }
 .cpy {
-    padding: 10px;
+    /* padding: 10px; */
     font-size: 16px;
     cursor: pointer;
     margin-left: 1%;
