@@ -10,7 +10,7 @@ function generateButtons(jsonFile, groupId){
 
             for (const [key, val] of Object.entries(group)) {
                 const btn = document.createElement('button');
-                btn.className = 'cpy';
+                btn.className = 'cpy-gen';
                 btn.innerHTML = key;
                 btn.setAttribute('data-text', val);
                 
@@ -37,6 +37,22 @@ function generateButtons(jsonFile, groupId){
         dyBtnGrp.parentNode.insertBefore(hr, dyBtnGrp.nextElementSibling);
     });
 }
+
+document.querySelectorAll('.cpy').forEach((btnX) => {
+    btnX.addEventListener('click', () => {
+        let str = btnX.getAttribute('data-text');
+
+        navigator.clipboard.writeText(str)
+            .then(() => {
+                const preTxt = btnX.innerHTML;
+                btnX.innerHTML = "Copied!";
+                setTimeout(() => {
+                    btnX.innerHTML = preTxt;
+                }, 1000);
+            })
+            .catch(err => console.error("copy failed", err));
+    });
+});
 
 generateButtons('private.json', 'dynamic-btn-group-private');
 generateButtons('public.json', 'dynamic-btn-group-public');
