@@ -8,7 +8,22 @@ function generateButtons(jsonFile, groupId){
             const groupDiv = document.createElement('div');
             groupDiv.className = 'btnbox';
 
-            for (const [key, val] of Object.entries(group)) {
+            if (group.label != '') {
+                const grpLabel = document.createElement('h3');
+                grpLabel.innerHTML = group.label;
+                grpLabel.className = 'btn-grp-label';
+                dyBtnGrp.append(grpLabel);
+            }
+
+            if (group.descr != '') {
+                const description = document.createElement('p');
+                description.innerHTML = group.descr;
+                description.className = 'btn-grp-label';
+                dyBtnGrp.append(description);
+            }
+            
+
+            for (const [key, val] of Object.entries(group.buttons)) {
                 const btn = document.createElement('button');
                 btn.className = 'cpy-gen';
                 btn.innerHTML = key;
@@ -33,6 +48,7 @@ function generateButtons(jsonFile, groupId){
             dyBtnGrp.appendChild(groupDiv);
         });
 
+        // seperate notepad from buttons
         const hr = document.createElement('hr');
         dyBtnGrp.parentNode.insertBefore(hr, dyBtnGrp.nextElementSibling);
     });

@@ -1,5 +1,33 @@
 [
     {
-        "Ans Frm Que": "Answer this interview question the interviewer gave me in one paragraph: \"___\""
+        "label": "Random",
+        "descr": "",
+        "buttons": {
+            "Headline": "Full Stack Software Developer | ASP.NET MVC, C# & JavaScript | Federal Compliance Systems"
+            
+        }
+    },
+    {
+        "label": "Search Query",
+        "descr": "Try to narrow down search to the 50 most relevant jobs",
+        "buttons": {
+            "indeed broad": "c# .net remote -senior",
+            "indeed narrow": "c# \".net\" remote -senior"
+        }
+    },
+    {
+        "label": "",
+        "descr": "",
+        "buttons": {
+            "LinkedIn broad": "c# .net remote NOT senior",
+            "LinkedIn narrow": "c# \".net\" remote NOT senior"
+        }
+    },
+    {
+        "label": "GPT Prompts",
+        "descr": "",
+        "buttons": {
+            "Answer Interview Question": "Answer this interview question the interviewer gave me in one paragraph: \"___\""
+        }
     }
 ]
