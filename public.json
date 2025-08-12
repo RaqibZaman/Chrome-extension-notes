@@ -3,13 +3,24 @@
         "label": "Random",
         "descr": "",
         "buttons": {
-            "Headline": "Full Stack Software Developer | ASP.NET MVC, C# & JavaScript | Federal Compliance Systems"
+            "Headline": "Full Stack Software Developer | ASP.NET MVC, C# & JavaScript | Federal Compliance Systems",
+            "Resume Link": "https://drive.google.com/file/d/1r1cG-AAucOR-Uxmk3TR4_jRlerCxQyNb/view?usp=drive_link"
+            
+        }
+    },
+    {
+        "label": "Job Boards",
+        "descr": "",
+        "id": "job-brds",
+        "buttons": {
+            "Workable": "https://jobs.workable.com/",
+            "HiringCafe": "https://hiring.cafe/"
             
         }
     },
     {
         "label": "Search Query",
-        "descr": "Try to narrow down search to the 50 most relevant jobs",
+        "descr": "Try to narrow down search to the 50 most relevant jobs \nconfig: 1) remote button 2)United States",
         "buttons": {
             "indeed broad": "c# .net remote -senior",
             "indeed narrow": "c# \".net\" remote -senior"
@@ -19,8 +30,16 @@
         "label": "",
         "descr": "",
         "buttons": {
-            "LinkedIn broad": "c# .net remote NOT senior",
-            "LinkedIn narrow": "c# \".net\" remote NOT senior"
+            "LinkedIn broad": "c# .net",
+            "LinkedIn narrow": "c# \".net\""
+        }
+    },
+    {
+        "label": "",
+        "descr": "By Tech Stack",
+        "buttons": {
+            "c# .net": "c# .net",
+            "c# .net mvc full stack": "c# .net mvc full stack"
         }
     },
     {

@@ -28,19 +28,30 @@ function generateButtons(jsonFile, groupId){
                 btn.className = 'cpy-gen';
                 btn.innerHTML = key;
                 btn.setAttribute('data-text', val);
+
+                if (group.id == "job-brds"){
+                    console.log("confirmation");
+                    btn.setAttribute('id', group.id);
+                    btn.addEventListener('click', () => {
+                        window.open(val, '_blank');
+                    });
+                }
+                else {
+                    btn.addEventListener('click', () => {
+                    let str = btn.getAttribute('data-text');
+                    navigator.clipboard.writeText(str)
+                        .then(() => {
+                            const preTxt = btn.innerHTML;
+                            btn.innerHTML = "Copied!";
+                            setTimeout(() => {
+                                btn.innerHTML = preTxt;
+                            }, 1000);
+                        })
+                        .catch(err => console.error("copy failed", err));
+                    });
+                }
                 
-                btn.addEventListener('click', () => {
-                let str = btn.getAttribute('data-text');
-                navigator.clipboard.writeText(str)
-                    .then(() => {
-                        const preTxt = btn.innerHTML;
-                        btn.innerHTML = "Copied!";
-                        setTimeout(() => {
-                            btn.innerHTML = preTxt;
-                        }, 1000);
-                    })
-                    .catch(err => console.error("copy failed", err));
-                });
+                
 
                 groupDiv.appendChild(btn);
             }
