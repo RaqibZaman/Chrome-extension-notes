@@ -84,45 +84,6 @@ document.querySelectorAll('.cpy').forEach((btnX) => {
 generateButtons('private.json', 'dynamic-btn-group-private');
 generateButtons('public.json', 'dynamic-btn-group-public');
 
-// fetch(chrome.runtime.getURL('private.json'))
-// .then(response => response.json())
-// .then(data => {
-//     const dyBtnGrp = document.getElementById('dynamic-btn-group');
-//     data.forEach(group => {
-//         const groupDiv = document.createElement('div');
-//         groupDiv.className = 'btnbox';
-
-//         for (const [key, val] of Object.entries(group)) {
-//             const btn = document.createElement('button');
-//             btn.className = 'cpy';
-//             btn.innerHTML = key;
-//             btn.setAttribute('data-text', val);
-//             groupDiv.appendChild(btn);
-//         }
-
-//         dyBtnGrp.appendChild(groupDiv);
-//     });
-
-//     // copy link/text from buttons to clipboard
-//     document.querySelectorAll('.cpy').forEach((btnX) => {
-//         btnX.addEventListener('click', () => {
-//             let str = btnX.getAttribute('data-text');
-
-//             navigator.clipboard.writeText(str)
-//                 .then(() => {
-//                     const preTxt = btnX.innerHTML;
-//                     btnX.innerHTML = "Copied!";
-//                     setTimeout(() => {
-//                         btnX.innerHTML = preTxt;
-//                     }, 1000);
-//                 })
-//                 .catch(err => console.error("copy failed", err));
-//         });
-//     });
-    
-// });
-
-
 const notepad = document.getElementById('notepad');
 const download_btn = document.getElementById('download');
 
@@ -148,3 +109,16 @@ download_btn.addEventListener("click", () => {
 
     URL.revokeObjectURL(url);   // memory management
 });
+
+chrome.action.openPopup();
+
+//   async function getCurrentTab() {
+//     let queryOptions = { active: true, lastFocusedWindow: true };
+//     // `tab` will either be a `tabs.Tab` instance or `undefined`.
+//     let [tab] = await chrome.tabs.query(queryOptions);
+//     console.log(tab.title);
+//     return tab;
+//   }
+
+//   console.log("testing");
+//   console.log(getCurrentTab());

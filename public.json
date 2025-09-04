@@ -19,7 +19,8 @@
             "indeed VA": "https://www.indeed.com/jobs?q=%22c%23%22%20.net&latLong=38.69686%2C-77.23134&locString=Lorton%2C%20VA%2C%2022079&fromage=1&radius=100&sc=0kf%3Aattr%28DSQF7%29%3B&from=searchOnDesktopSerp",
             "indeed .net dev remote": "https://www.indeed.com/jobs?q=net+developer&l=United+States&fromage=1&sc=0kf%3Aattr%28DSQF7%29%3B&from=searchOnDesktopSerp&vjk=602a5ebe8057b03c",
             "linkedIn": "https://www.linkedin.com/jobs/search/?keywords=%22C%23%22%20.NET&geoId=106510640&distance=100&f_TPR=r86400&sortBy=DD",
-            "Dice": "https://www.dice.com/jobs?filters.postedDate=ONE&filters.workplaceTypes=Remote&q=net+developer"
+            "Dice: Full Stack": "https://www.dice.com/jobs?filters.postedDate=ONE&filters.workplaceTypes=Remote&q=Full+Stack",
+            "Dice: net dev": "https://www.dice.com/jobs?filters.postedDate=ONE&filters.workplaceTypes=Remote&q=net+developer"
         }
     },
     {
