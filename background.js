@@ -24,3 +24,18 @@
 // } catch(e) {
 //     console.log(e);
 // }
+
+// manifest.json <= added webNavigation permission
+// when URL changes, notify tab (content.js)
+const lastUrlByTab = new Map();     // keep track of multiple tabs in chrome, check which tab has the url-changed
+
+chrome.webNavigation.onHistoryStateUpdated.addListener(({tabId, url}) => {
+    if (lastUrlByTab.get(tabId) === url){   // compare tab url with changed url
+        return; // skip on duplication
+    }
+    lastUrlByTab.set(tabId, url); // build map on success for future reference
+    //console.log(typeof{tabId});
+    console.log("Background.js");
+    console.log(url);
+    chrome.tabs.sendMessage(tabId, {type: "URL_CHANGED", aurl: url});
+});

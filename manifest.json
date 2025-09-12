@@ -3,7 +3,7 @@
     "name": "Test Extension",
     "version": "1.0",
     "description": "Learning how to make Chrome Extensions",
-    "permissions": ["storage","sidePanel", "scripting", "activeTab", "tabs"],
+    "permissions": ["storage","sidePanel", "scripting", "activeTab", "tabs", "webNavigation"],
     "host_permissions": ["<all_urls>"],
     "icons": {
         "128": "icon128.png"
@@ -26,7 +26,7 @@
         {
             "matches": ["<all_urls>"],
             "js": ["content.js"],
-            "run_at": "document_end"
+            "run_at": "document_start"
         }
     ]
     
