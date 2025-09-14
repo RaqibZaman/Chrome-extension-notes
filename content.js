@@ -19,6 +19,11 @@ console.log("hello world!");
 //     console.log("DOMContentLoaded: ", Date());
 // });
 
+
+// I need a live expression to check what is selected/clicked. So I know what id to refer to when automating
+// USE:::: document.activeElement
+
+
 // the issues is that because a lot of websites are SPAs and use url redirects without refreshing the page bc of client side rendering (CSR), through multiple urls, this listener may trigger twice after going to the "next page" once.
 // to fix this, I'll use setTime to conditionally run the inner function after .25 seconds
 // let runScript = true;
@@ -41,9 +46,13 @@ chrome.runtime.onMessage.addListener((m) => {
                 // collect the divs by indeed id
                 const divs = document.querySelectorAll('div[id^="q_"]');
                 console.log(divs);
+                divs.forEach(div => {
+                    const inputs = div.querySelectorAll('input');
+                    console.log(`${div.id} inputs: `, inputs);
+                });
+                hardCode();
             }
-            // I need a live expression to check what is selected/clicked. So I know what id to refer to when automating
-            // use: document.activeElement
+            
 
 
             // replicate user click 
@@ -52,3 +61,15 @@ chrome.runtime.onMessage.addListener((m) => {
 
     // }
 });
+
+function hardCode() {
+    if (location.href === 'https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection'){
+        setTimeout(() => {
+            document.querySelector('[data-testid="resume-selection-file-resume-radio-card-input"]').click();
+            document.querySelector('[data-testid="continue-button"]').click();
+            console.log("hardCode");
+        }, 2000);
+    }
+}
+
+// in a div, find the input elements and associated label, auto populate information, need to store information, use functions and don't try to hard-code please.
