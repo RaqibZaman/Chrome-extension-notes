@@ -61,7 +61,13 @@ function handleDice(retries = 3) {
                 const btn = document.querySelector("#applyButton").querySelector("apply-button-wc").shadowRoot.querySelector("button");
                 
                 if (btn) {
-                    btn.click();
+                    // click if its easy apply
+                    if (btn.textContent.trim().toLowerCase() === "easy apply"){
+                        btn.click();
+                    } else {
+                        throw new Error("Btn not found");   // damn dynamic content
+                    }
+                    
                 } else {
                     throw new Error("Btn not found");
                 }
