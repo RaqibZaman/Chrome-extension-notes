@@ -28,12 +28,6 @@ console.log("hello world!");
 // to fix this, I'll use setTime to conditionally run the inner function after .25 seconds
 // let runScript = true;
 chrome.runtime.onMessage.addListener((m) => {
-    // I need to wait before checking the DOM
-    // if (runScript) {
-    //     runScript = false;
-    //     setTimeout(() => {
-    //         runScript = !runScript;
-    //     }, 250);
         if (m?.type === "URL_CHANGED") {
             console.log(m.aurl);
             console.log("testing123");
@@ -49,16 +43,25 @@ chrome.runtime.onMessage.addListener((m) => {
 
                 hardCode();
                 indeed_module_querySelect(); // by div id "q_"
+            } else if (location.hostname === "www.dice.com"){
+                handleDice();
             }
-            
 
-
-            // replicate user click 
 
         }
 
-    // }
 });
+
+function handleDice() {
+    console.log("dice1");
+    if (location.href.includes("www.dice.com/job-detail/")){
+        console.log("dice2");
+        setTimeout(() => {
+            document.querySelector("#applyButton").querySelector("apply-button-wc").shadowRoot.querySelector("button").click();
+            console.log("dice3");
+        }, 1600);
+    }
+}
 
 function hardCode() {
     if (location.href === 'https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection'){
