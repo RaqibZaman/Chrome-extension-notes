@@ -52,14 +52,25 @@ chrome.runtime.onMessage.addListener((m) => {
 
 });
 
-function handleDice() {
+function handleDice(retries = 3) {
     console.log("dice1");
     if (location.href.includes("www.dice.com/job-detail/")){
         console.log("dice2");
         setTimeout(() => {
-            document.querySelector("#applyButton").querySelector("apply-button-wc").shadowRoot.querySelector("button").click();
-            console.log("dice3");
-        }, 1600);
+            try {
+                const btn = document.querySelector("#applyButton").querySelector("apply-button-wc").shadowRoot.querySelector("button");
+                
+                if (btn) {
+                    btn.click();
+                } else {
+                    throw new Error("Btn not found");
+                }
+            } catch (err) {
+                if (retries > 1){
+                    handleDice(retries - 1);
+                }
+            }
+        }, 1200);
     }
 }
 
