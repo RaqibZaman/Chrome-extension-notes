@@ -6,6 +6,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="AutoFieldPreset">
+        <h2>Auto Field Preset</h2>
+        <h3>Input Data Type</h3>
+        <label>
+            <input type="radio" name="dataType" value="text" checked />
+            text
+        </label>
+        <label>
+            <input type="radio" name="dataType" value="radio" />
+            radio
+        </label>
+        <h3>Label Text</h3>
+        <input type="text" name="labelText" placeholder="Enter Label Text" />
+        <h3>Value</h3>
+        <input type="text" name="labelText" placeholder="Enter Input Value" />
+        <button>Add Entry</button>
+    </div>
+    <hr/>
     <div id="button-container-1" class="btnbox" style="margin-top: 1%;">
         <button class="cpy" data-text="https://www.linkedin.com/in/raqibzaman/"> LinkedIn </button>
         <button class="cpy" data-text="https://github.com/RaqibZaman"> GitHub </button>
@@ -18,7 +36,7 @@
     <div id="dynamic-btn-group-public"></div>
     <div class="note-container" id="note-container">
         <textarea id="notepad" placeholder="Type your notes here..."></textarea>
-        <button id="download">Download Notes</button>
+        <button id="downloadNotesBtn">Download Notes</button>
     </div>
     <script src="panel.js"></script>
 </body>

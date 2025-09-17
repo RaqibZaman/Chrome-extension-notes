@@ -52,7 +52,7 @@ chrome.runtime.onMessage.addListener((m) => {
 
 });
 
-function handleDice(retries = 3) {
+function handleDice(retries = 5) {
     console.log("dice1");
     if (location.href.includes("www.dice.com/job-detail/")){
         console.log("dice2");
@@ -81,6 +81,7 @@ function handleDice(retries = 3) {
 }
 
 function hardCode() {
+    // resume selection page
     if (location.href === 'https://us.smartapply.indeed.com/beta/indeedapply/form/resume-selection-module/resume-selection'){
         setTimeout(() => {
             document.querySelector('[data-testid="resume-selection-file-resume-radio-card-input"]').click();
@@ -126,6 +127,11 @@ function indeed_module_querySelect(){
 
 
     });
+
+    // after fields filled above, continue if relevant experience page.
+    // if (location.href === "https://us.smartapply.indeed.com/beta/indeedapply/form/resume-module/relevant-experience"){
+    //     document.querySelector('[data-testid="continue-button"]').click();
+    // }
 }
 
 // "hard" test data

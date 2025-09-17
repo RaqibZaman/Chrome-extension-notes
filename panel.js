@@ -85,7 +85,7 @@ generateButtons('private.json', 'dynamic-btn-group-private');
 generateButtons('public.json', 'dynamic-btn-group-public');
 
 const notepad = document.getElementById('notepad');
-const download_btn = document.getElementById('download');
+const download_btn = document.getElementById('downloadNotesBtn');
 
 // Load Notes
 chrome.storage.local.get("note", (data) => {
