@@ -52,10 +52,11 @@ chrome.runtime.onMessage.addListener((m) => {
 
 });
 
-function handleDice(retries = 5) {
-    console.log("dice1");
+// I need to break down the 2 upper level if statements into 2 separate functions
+function handleDice(retries = 10) {
+    console.log("handleDice fn");
     if (location.href.includes("www.dice.com/job-detail/")){
-        console.log("dice2");
+        console.log("dice job detail pg");
         setTimeout(() => {
             try {
                 const btn = document.querySelector("#applyButton").querySelector("apply-button-wc").shadowRoot.querySelector("button");
@@ -76,7 +77,24 @@ function handleDice(retries = 5) {
                     handleDice(retries - 1);
                 }
             }
-        }, 1200);
+        }, 400);
+    }
+    if (location.href.includes("www.dice.com/apply?")){
+        console.log("dice apply pg");
+        setTimeout(() => {
+            try {
+                const btn = document.querySelector('.btn-next');
+                if (btn) {
+                    btn.click();
+                } else {
+                    throw new Error("Next Btn not found");
+                }
+            } catch (err) {
+                if (retries > 1) {
+                    handleDice(retries -1);
+                }
+            }
+        }, 400);
     }
 }
 

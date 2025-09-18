@@ -44,6 +44,8 @@ const lastUrlByTab = new Map(); // map the url for each tab- like an array for e
 const debounceTimers = new Map();
 const DEBOUNCE_MS = 250;
 
+// there's some kidn of problem here, not working on Dice I believe!
+// Is there a way to do debug the information here??
 chrome.webNavigation.onHistoryStateUpdated.addListener(({tabId, url}) => {
     // If url is the same as before, skip... maybe runs on refresh???
     if (lastUrlByTab.get(tabId) === url) {
