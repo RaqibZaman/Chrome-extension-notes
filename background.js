@@ -45,9 +45,12 @@ const debounceTimers = new Map();
 const DEBOUNCE_MS = 250;
 
 // there's some kidn of problem here, not working on Dice I believe!
-// Is there a way to do debug the information here??
+// DEBUG: chrome://extensions/ => your extension => there is a link to "service worker", click that to see console messages
 chrome.webNavigation.onHistoryStateUpdated.addListener(({tabId, url}) => {
     // If url is the same as before, skip... maybe runs on refresh???
+    console.log("tabId",tabId);
+    console.log("url", url);
+    console.log("lastUrlByTab.get(tabId)", lastUrlByTab.get(tabId));
     if (lastUrlByTab.get(tabId) === url) {
         return;
     }
@@ -73,3 +76,14 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(({tabId, url}) => {
 
     debounceTimers.set(tabId, timerId);
 });
+
+/*
+Notes
+-----
+Background.js (service_worker) to check for url update i guess
+https://www.reddit.com/r/javascript/comments/4svcfn/comment/d5crplx/
+Mutation Observer
+https://stackoverflow.com/questions/3522090/event-when-window-location-href-changes
+
+
+*/

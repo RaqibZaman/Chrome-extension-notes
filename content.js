@@ -27,6 +27,8 @@ console.log("hello world!");
 // the issues is that because a lot of websites are SPAs and use url redirects without refreshing the page bc of client side rendering (CSR), through multiple urls, this listener may trigger twice after going to the "next page" once.
 // to fix this, I'll use setTime to conditionally run the inner function after .25 seconds
 // let runScript = true;
+
+// For above comment: why not addListener to href change?
 chrome.runtime.onMessage.addListener((m) => {
         if (m?.type === "URL_CHANGED") {
             console.log(m.aurl);
