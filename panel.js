@@ -1,3 +1,9 @@
+// DOM references
+const notepad = document.getElementById('notepad');
+const download_btn = document.getElementById('downloadNotesBtn');
+const copy_note_btn = document.getElementById('copyNotesBtn');
+const clear_note_btn = document.getElementById('clearNotesBtn');
+
 // dynamically make buttons using private data
 function generateButtons(jsonFile, groupId){
     fetch(chrome.runtime.getURL(jsonFile))
@@ -29,13 +35,24 @@ function generateButtons(jsonFile, groupId){
                 btn.innerHTML = key;
                 btn.setAttribute('data-text', val);
 
+                // open link
                 if (group.id == "job-brds"){
-                    console.log("confirmation");
                     btn.setAttribute('id', group.id);
                     btn.addEventListener('click', () => {
                         window.open(val, '_blank');
                     });
                 }
+
+                // add to notepad
+                else if (group.id == "notepadBtns"){
+                    btn.setAttribute('id', group.id);
+                    btn.addEventListener('click', () => {
+                        let str = btn.getAttribute('data-text');
+                        notepad.value += str + "\n";
+                    });
+                }
+
+                // copy to clipboard
                 else {
                     btn.addEventListener('click', () => {
                     let str = btn.getAttribute('data-text');
@@ -65,6 +82,7 @@ function generateButtons(jsonFile, groupId){
     });
 }
 
+// These are for hard-coded buttons, not dynamically generated
 document.querySelectorAll('.cpy').forEach((btnX) => {
     btnX.addEventListener('click', () => {
         let str = btnX.getAttribute('data-text');
@@ -83,19 +101,38 @@ document.querySelectorAll('.cpy').forEach((btnX) => {
 
 generateButtons('private.json', 'dynamic-btn-group-private');
 generateButtons('public.json', 'dynamic-btn-group-public');
+generateButtons('notepad.json', 'dynamic-btn-group-notepad');
 
-const notepad = document.getElementById('notepad');
-const download_btn = document.getElementById('downloadNotesBtn');
+
 
 // Load Notes
 chrome.storage.local.get("note", (data) => {
     notepad.value = data.note || "";
 });
 
+// update local storage???
 notepad.addEventListener('input', () => {
     chrome.storage.local.set({ note: notepad.value });
 });
 
+// Copy Notes to Clipboard
+copy_note_btn.addEventListener("click", () => {
+    let notes = notepad.value;
+    navigator.clipboard.writeText(notes)
+        .then(() => {
+            const preTxt = copy_note_btn.innerHTML;
+            copy_note_btn.innerHTML = "Copied!";
+            setTimeout(() => {
+                copy_note_btn.innerHTML = preTxt;
+            }, 1000);
+        })
+        .catch(err => console.error("copy failed", err));
+});
+
+// Clear Notes
+clear_note_btn.addEventListener("click", () => {
+    notepad.value = "";
+});
 
 // Download Notes
 download_btn.addEventListener("click", () => {

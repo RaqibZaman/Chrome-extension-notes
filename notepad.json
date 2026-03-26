@@ -1,0 +1,18 @@
+[
+    {
+        "label": "Notepad Note Maker",
+        "descr": "",
+        "id": "notepadBtns",
+        "buttons": {
+            "Interest": "I am interested!",
+            "Salary": "I would prefer a salary around $110,000",
+            "NoticePeriod": "I don't have a notice period",
+            "EXP": "Overall I have about 5+ years Experience",
+            "USC": "I am a US Citizen",
+            "Resume": "And here's my Resume: https://drive.google.com/file/d/1b9EFWId_PoPCZoZnOtF3K8UixKrwDHgI/view?usp=drive_link",
+            "dummy6": "123",
+            "dummy7": "",
+            "dummy8": ""
+        }
+    }
+]
