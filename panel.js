@@ -11,8 +11,12 @@ function generateButtons(jsonFile, groupId){
     .then(data => {
         const dyBtnGrp = document.getElementById(groupId);
         data.forEach(group => {
+            // box setup
             const groupDiv = document.createElement('div');
             groupDiv.className = 'btnbox';
+            if (group.id) {
+                groupDiv.id = "box_" + group.id;
+            }
 
             if (group.label != '') {
                 const grpLabel = document.createElement('h3');
@@ -28,7 +32,7 @@ function generateButtons(jsonFile, groupId){
                 dyBtnGrp.append(description);
             }
             
-
+            // setup for buttons in box
             for (const [key, val] of Object.entries(group.buttons)) {
                 const btn = document.createElement('button');
                 btn.className = 'cpy-gen';
@@ -37,7 +41,8 @@ function generateButtons(jsonFile, groupId){
 
                 // open link
                 if (group.id == "job-brds"){
-                    btn.setAttribute('id', group.id);
+                    btn.classList.add("job-brds");
+                    //btn.setAttribute('id', group.id);
                     btn.addEventListener('click', () => {
                         window.open(val, '_blank');
                     });
@@ -102,8 +107,6 @@ document.querySelectorAll('.cpy').forEach((btnX) => {
 generateButtons('private.json', 'dynamic-btn-group-private');
 generateButtons('public.json', 'dynamic-btn-group-public');
 generateButtons('notepad.json', 'dynamic-btn-group-notepad');
-
-
 
 // Load Notes
 chrome.storage.local.get("note", (data) => {
