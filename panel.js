@@ -3,6 +3,7 @@ const notepad = document.getElementById('notepad');
 const download_btn = document.getElementById('downloadNotesBtn');
 const copy_note_btn = document.getElementById('copyNotesBtn');
 const clear_note_btn = document.getElementById('clearNotesBtn');
+const todayIs = new Date().getDay();
 
 // dynamically make buttons using private data
 function generateButtons(jsonFile, groupId){
@@ -39,10 +40,27 @@ function generateButtons(jsonFile, groupId){
                 btn.innerHTML = key;
                 btn.setAttribute('data-text', val);
 
-                // open link
+                // job board
                 if (group.id == "job-brds"){
                     btn.classList.add("job-brds");
-                    //btn.setAttribute('id', group.id);
+
+                    if (key === "Un employ ment"){
+                        //btn.classList.add("yellBrdr");
+                        // if today is monday
+                        if (todayIs === 1){
+                            btn.classList.add("yellBrdr");
+                        }
+                    }
+
+                    if (key === "Music"){
+                        //btn.classList.add("yellBrdr");
+                        // if today is monday
+                        if (todayIs === 1){
+                            btn.classList.add("bluBrdr");
+                        }
+                    }
+                    
+                    // open link
                     btn.addEventListener('click', () => {
                         window.open(val, '_blank');
                     });
