@@ -53,11 +53,7 @@ function generateButtons(jsonFile, groupId){
                     }
 
                     if (key === "Music"){
-                        //btn.classList.add("yellBrdr");
-                        // if today is monday
-                        if (todayIs === 1){
-                            btn.classList.add("bluBrdr");
-                        }
+                        btn.classList.add("bluBrdr");
                     }
                     
                     // open link
