@@ -10,6 +10,13 @@ console.log("URL pathname", location.pathname);
 console.log("hello world!");
 console.log("hello world!");
 
+if (location.hostname === "mail.google.com"){
+    function trashToRecycle() {
+        document.getElementById(":177").querySelector("a").text = "Recycle";
+    };
+    setTimeout(trashToRecycle, 2000);
+}
+
 // another note: I need the content.js to re-execute upon url refresh. Maybe an listener or something I might need to change in manifest...
 
 // use addEventListener to check for page load

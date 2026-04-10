@@ -166,6 +166,7 @@ download_btn.addEventListener("click", () => {
 
 chrome.action.openPopup();
 
+
 //   async function getCurrentTab() {
 //     let queryOptions = { active: true, lastFocusedWindow: true };
 //     // `tab` will either be a `tabs.Tab` instance or `undefined`.
